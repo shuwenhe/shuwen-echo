@@ -5,7 +5,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/shuwenhe/shuwen-echo/dao"
-	utils "github.com/shuwenhe/utils"
+	"github.com/shuwenhe/utils"
 )
 
 func Login(ctx echo.Context) error {
