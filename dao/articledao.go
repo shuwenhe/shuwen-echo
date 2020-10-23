@@ -2,8 +2,7 @@ package dao
 
 import (
 	"github.com/shuwenhe/shuwen-beego/models"
-	"github.com/shuwenhe/shuwen-echo/db"
-	"github.com/shuwenhe/utils"
+	db "github.com/shuwenhe/shuwen-echo/database"
 )
 
 func ArticlePage(pageNo int, pageSize int) ([]*models.Article, error) {
@@ -21,7 +20,6 @@ func ArticleCount() (int, error) {
 	sql := "SELECT COUNT(id) as count FROM article"
 	err := db.Db.Get(&count, sql)
 	if err != nil {
-		utils.NewResult(utils.Fail, err.Error())
 		return 0, err
 	}
 	return count, nil

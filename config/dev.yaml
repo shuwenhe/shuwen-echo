@@ -1,0 +1,7 @@
+db:
+  hostname: 62.234.11.179
+  port: 3306
+  username: shuwen_beego
+  password: Shuwen-beego.com@_00..
+  dbname: shuwen_beego
+addr: ":8080"

@@ -2,7 +2,7 @@ package dao
 
 import (
 	"github.com/shuwenhe/shuwen-beego/models"
-	"github.com/shuwenhe/shuwen-echo/db"
+	db "github.com/shuwenhe/shuwen-echo/database"
 )
 
 func Login(num string) (*models.User, error) {

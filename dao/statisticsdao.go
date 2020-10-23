@@ -3,7 +3,7 @@ package dao
 import (
 	"fmt"
 
-	"github.com/shuwenhe/shuwen-echo/db"
+	db "github.com/shuwenhe/shuwen-echo/database"
 	"github.com/shuwenhe/shuwen-echo/models"
 )
 
