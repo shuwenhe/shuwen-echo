@@ -1,4 +1,4 @@
-package utils
+package util
 
 // Mp Save login user
 var Mp map[int]string
