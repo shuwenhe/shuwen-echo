@@ -30,3 +30,10 @@ func testGetUserByID(t *testing.T) {
 	user, _ := GetUserByID(1)
 	fmt.Println("user = ", user)
 }
+
+func testGetUsers(t *testing.T) {
+	users, _ := GetUsers()
+	for _, user := range users {
+		fmt.Println("user = ", user)
+	}
+}

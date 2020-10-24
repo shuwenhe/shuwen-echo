@@ -16,17 +16,16 @@ import (
 func Login(ctx echo.Context) error {
 	name := ctx.FormValue("name")
 	if name == "" {
-		return ctx.JSON(utils.NewErrIpt("name is not null"))
+		return ctx.JSON(utils.NewErrIpt("Name is not null"))
 	}
 	user, err := dao.Login(name)
 	if err != nil {
 		return ctx.JSON(utils.NewFail("Please check if the username is correct!"))
 	}
-	pass := ctx.FormValue("pass")
-	if pass != user.Password {
+	password := ctx.FormValue("password")
+	if password != user.Password {
 		return ctx.JSON(utils.NewFail("Password error!"))
 	}
-
 	data := models.Jwt{
 		ID:   user.ID,
 		Name: user.Name,
@@ -40,7 +39,7 @@ func Login(ctx echo.Context) error {
 	if err != nil {
 		return ctx.JSON(utils.NewFail("System error, please login again!", err.Error()))
 	}
-	return ctx.JSON(utils.NewSucc("token is successfully!", token))
+	return ctx.JSON(utils.NewSucc("token is success!", token))
 }
 
 func AddUser(ctx echo.Context) error {
@@ -63,7 +62,7 @@ func AddUser(ctx echo.Context) error {
 		Phone:    phone,
 	}
 	dao.AddUser(user2)
-	return ctx.JSON(utils.NewSucc("token is successfully!", user2))
+	return ctx.JSON(utils.NewSucc("token is success!", user2))
 }
 
 func DeleteUserByID(ctx echo.Context) error {
@@ -77,4 +76,12 @@ func DeleteUserByID(ctx echo.Context) error {
 		return ctx.JSON(utils.NewFail("Delete user fail"))
 	}
 	return ctx.JSON(utils.NewSucc("Delete user success"))
+}
+
+func GetUsers(ctx echo.Context) error {
+	users, err := dao.GetUsers()
+	if err != nil {
+		return ctx.JSON(utils.NewFail("Get the users fail!"))
+	}
+	return ctx.JSON(utils.NewSucc("Get the users success!", users))
 }

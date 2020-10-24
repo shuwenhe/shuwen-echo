@@ -1,9 +1,12 @@
 package routers
 
 import (
+	"fmt"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"github.com/shuwenhe/shuwen-echo/models"
+	"github.com/shuwenhe/shuwen-echo/util"
 	"github.com/shuwenhe/utils"
 )
 
@@ -18,9 +21,19 @@ func Filter(next echo.HandlerFunc) echo.HandlerFunc {
 			return []byte("key"), nil
 		})
 		if err != nil {
-			return c.JSON(utils.NewFail("Login information verification failed"))
+			return c.JSON(utils.NewFail("Login information verification failed!"))
 		}
 		if j.Valid {
+			oldToken, ok := util.Get(dl.ID)
+			fmt.Println("oldToken = ", oldToken)
+			fmt.Println("oldToken = ", dl.ID)
+			fmt.Println("oldToken = ", ok)
+			if !ok {
+				return c.JSON(utils.NewFail("Server restarted，please login again!"))
+			}
+			if oldToken != token {
+				return c.JSON(utils.NewFail("Your account logged in elsewhere!"))
+			}
 			c.Response().Header().Set(echo.HeaderServer, "Echo/3.0")
 			return next(c)
 		} else {

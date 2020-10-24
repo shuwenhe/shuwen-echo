@@ -51,3 +51,21 @@ func GetUserByID(id int64) (*models.User, error) {
 	fmt.Println("user = ", user)
 	return user, nil
 }
+
+func GetUsers() ([]*models.User, error) {
+	sql := "select * from users"
+	rows, err := db.Db.Query(sql)
+	if err != nil {
+		return nil, err
+	}
+	var users []*models.User
+	for rows.Next() {
+		user := &models.User{}
+		err := rows.Scan(&user.ID, &user.Name, &user.Password, &user.Phone)
+		if err != nil {
+			return nil, err
+		}
+		users = append(users, user)
+	}
+	return users, nil
+}

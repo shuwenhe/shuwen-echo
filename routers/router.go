@@ -16,10 +16,11 @@ func Run() {
 	e.GET("/api/class/all", controllers.Index)
 	e.GET("/api/test/index2", test.Index2)
 
+	api := e.Group("/api", Filter)
 	e.POST("/login", controllers.Login)
 	e.POST("/addUser", controllers.AddUser)
-	api := e.Group("/api", Filter)
 	api.GET("/user/del:id", controllers.DeleteUserByID)
+	api.GET("/user/getUsers", controllers.GetUsers)
 
 	e.Start(":8080")
 }
