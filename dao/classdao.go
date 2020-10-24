@@ -23,9 +23,9 @@ func UpdateClass(cls *models.Class) error {
 	return nil
 }
 
-func GetClasses() ([]*model.Class, error) {
+func GetClasses() ([]*models.Class, error) {
 	sql := "select * from class"
-	classes := []*model.Class{}
+	classes := []*models.Class{}
 	err := db.Db.Select(&classes, sql)
 	if err != nil {
 		return nil, err

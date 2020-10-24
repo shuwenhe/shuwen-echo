@@ -36,7 +36,7 @@ func Login(ctx echo.Context) error {
 	}
 	jwts := jwt.NewWithClaims(jwt.SigningMethodHS256, data)
 	token, err := jwts.SignedString([]byte(`key`))
-	util.Set()
+	util.Set(user.ID, token)
 	if err != nil {
 		return ctx.JSON(utils.NewFail("System error, please login again!", err.Error()))
 	}
