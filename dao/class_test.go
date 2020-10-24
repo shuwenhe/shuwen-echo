@@ -30,7 +30,7 @@ func testUpdateClass(t *testing.T) {
 	UpdateClass(cls)
 }
 
-func TestGetClasses(t *testing.T) {
+func testGetClasses(t *testing.T) {
 	classes, _ := GetClasses()
 	for _, class := range classes {
 		fmt.Println("class = ", class)

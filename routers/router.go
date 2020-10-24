@@ -1,4 +1,4 @@
-package router
+package routers
 
 import (
 	"github.com/labstack/echo"
@@ -12,9 +12,14 @@ func Run() {
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
+
 	e.GET("/api/class/all", controllers.Index)
 	e.GET("/api/test/index2", test.Index2)
-	e.GET("/user/login", controllers.Login)
+
+	e.POST("/login", controllers.Login)
+	e.POST("/addUser", controllers.AddUser)
+	api := e.Group("/api", Filter)
+	api.GET("/user/del:id", controllers.DeleteUserByID)
 
 	e.Start(":8080")
 }
