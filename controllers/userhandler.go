@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"strconv"
 	"time"
 
@@ -65,9 +64,37 @@ func AddUser(ctx echo.Context) error {
 	return ctx.JSON(utils.NewSucc("token is success!", user2))
 }
 
+func GetUsers(ctx echo.Context) error {
+	users, err := dao.GetUsers()
+	if err != nil {
+		return ctx.JSON(utils.NewFail("Get the users fail!"))
+	}
+	return ctx.JSON(utils.NewSucc("Get the users success!", users))
+}
+
+func UpdateUser(ctx echo.Context) error {
+	id, err := strconv.Atoi(ctx.FormValue("id"))
+	if err != nil {
+		return ctx.JSON(utils.NewFail("Get the id is fail!"))
+	}
+	name := ctx.FormValue("name")
+	password := ctx.FormValue("password")
+	phone := ctx.FormValue("phone")
+	user := &models.User{
+		ID:       id,
+		Name:     name,
+		Password: password,
+		Phone:    phone,
+	}
+	err2 := dao.UpdateUser(user)
+	if err2 != nil {
+		return ctx.JSON(utils.NewFail("Get the user fail!"))
+	}
+	return ctx.JSON(utils.NewSucc("Update user success!"))
+}
+
 func DeleteUserByID(ctx echo.Context) error {
 	id, err := strconv.Atoi(ctx.Param("id"))
-	fmt.Println("id=***=", id)
 	if err != nil {
 		return ctx.JSON(utils.NewFail("Input data is error", err.Error()))
 	}
@@ -76,12 +103,4 @@ func DeleteUserByID(ctx echo.Context) error {
 		return ctx.JSON(utils.NewFail("Delete user fail"))
 	}
 	return ctx.JSON(utils.NewSucc("Delete user success"))
-}
-
-func GetUsers(ctx echo.Context) error {
-	users, err := dao.GetUsers()
-	if err != nil {
-		return ctx.JSON(utils.NewFail("Get the users fail!"))
-	}
-	return ctx.JSON(utils.NewSucc("Get the users success!", users))
 }

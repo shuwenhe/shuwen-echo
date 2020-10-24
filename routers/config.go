@@ -1,8 +1,6 @@
 package routers
 
 import (
-	"fmt"
-
 	"github.com/dgrijalva/jwt-go"
 	"github.com/labstack/echo"
 	"github.com/shuwenhe/shuwen-echo/models"
@@ -25,13 +23,12 @@ func Filter(next echo.HandlerFunc) echo.HandlerFunc {
 		}
 		if j.Valid {
 			oldToken, ok := util.Get(dl.ID)
-			fmt.Println("oldToken = ", oldToken)
-			fmt.Println("oldToken = ", dl.ID)
-			fmt.Println("oldToken = ", ok)
 			if !ok {
-				return c.JSON(utils.NewFail("Server restarted，please login again!"))
+				util.Set(dl.ID, token)
+				c.Response().Header().Set(echo.HeaderServer, "Echo/3.0")
+				return next(c)
 			}
-			if oldToken != token {
+			if token != oldToken {
 				return c.JSON(utils.NewFail("Your account logged in elsewhere!"))
 			}
 			c.Response().Header().Set(echo.HeaderServer, "Echo/3.0")

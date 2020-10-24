@@ -29,17 +29,6 @@ func AddUser(user *models.User) error {
 	return nil
 }
 
-func DeleteUserByID(id int) error {
-	sql := "delete from users where id=?"
-	_, err := db.Db.Exec(sql, id)
-	fmt.Println("***")
-	if err != nil {
-		fmt.Println("***")
-		return err
-	}
-	return nil
-}
-
 func GetUserByID(id int64) (*models.User, error) {
 	sql := "select * from users where id = ?"
 	row := db.Db.QueryRow(sql, id)
@@ -68,4 +57,24 @@ func GetUsers() ([]*models.User, error) {
 		users = append(users, user)
 	}
 	return users, nil
+}
+
+func UpdateUser(user *models.User) error {
+	sql := "update users set name=?,password=?,phone=? where id=?"
+	_, err := db.Db.Exec(sql, &user.Name, &user.Password, &user.Phone, &user.ID)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func DeleteUserByID(id int) error {
+	sql := "delete from users where id=?"
+	_, err := db.Db.Exec(sql, id)
+	fmt.Println("***")
+	if err != nil {
+		fmt.Println("***")
+		return err
+	}
+	return nil
 }

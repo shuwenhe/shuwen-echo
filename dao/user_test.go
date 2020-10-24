@@ -37,3 +37,13 @@ func testGetUsers(t *testing.T) {
 		fmt.Println("user = ", user)
 	}
 }
+
+func testUpdateUser(t *testing.T) {
+	user := &models.User{
+		ID:       9,
+		Name:     "sophie",
+		Password: "123456",
+		Phone:    "13811457211",
+	}
+	UpdateUser(user)
+}

@@ -19,8 +19,9 @@ func Run() {
 	api := e.Group("/api", Filter)
 	e.POST("/login", controllers.Login)
 	e.POST("/addUser", controllers.AddUser)
-	api.GET("/user/del:id", controllers.DeleteUserByID)
 	api.GET("/user/getUsers", controllers.GetUsers)
+	api.POST("/user/updateUser", controllers.UpdateUser)
+	api.GET("/user/del:id", controllers.DeleteUserByID)
 
 	e.Start(":8080")
 }
