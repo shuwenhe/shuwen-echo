@@ -197,8 +197,8 @@ github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529/go.mod h1:DxrIzT+xaE7yg
 github.com/shiena/ansicolor v0.0.0-20200904210342-c7312218db18/go.mod h1:nkxAfR/5quYxwPZhyDxgasBMnRtBZd0FCEpawpjMUFg=
 github.com/shuwenhe/shuwen-beego v0.0.0-20201021115304-fbc73b73a235 h1:BRF8i6zXlaP8dTHMBWIYxBzYp9A9UK+8sLgkm070hAw=
 github.com/shuwenhe/shuwen-beego v0.0.0-20201021115304-fbc73b73a235/go.mod h1:iubLpF4PqKHewQmJLtwXhbGHNUDMXZbXK72DN3DMxHU=
-github.com/shuwenhe/shuwen-echo v0.0.0-20201024041729-12badd6cbd61 h1:ad3uRFQugvY4gyjvAF90TCEe7dJH3Gjn6lyNTfWuuTA=
-github.com/shuwenhe/shuwen-echo v0.0.0-20201024041729-12badd6cbd61/go.mod h1:1BT9tkmloqymgD/hszNwhknsj+6jsTaQRSZR7hkoxS0=
+github.com/shuwenhe/shuwen-echo v0.0.0-20201024042200-b4b89c099e96 h1:9Lth1d02ZQtz0BYgNXC+TAIyT2ZUDO7u0g1m1FirhJA=
+github.com/shuwenhe/shuwen-echo v0.0.0-20201024042200-b4b89c099e96/go.mod h1:1BT9tkmloqymgD/hszNwhknsj+6jsTaQRSZR7hkoxS0=
 github.com/shuwenhe/shuwen-go-web v0.0.0-20201017141616-82187f8a86a7/go.mod h1:j8hdLKqvM+Rt7vVMASEikTsld9rdgP5bspDe52F9Pyo=
 github.com/shuwenhe/shuwen-go-web v0.0.0-20201020090326-8071956d243b h1:bUVZii9j7g/TdHp504ptkG4R0pYFPlz9srauWjxoGL8=
 github.com/shuwenhe/shuwen-go-web v0.0.0-20201020090326-8071956d243b/go.mod h1:j8hdLKqvM+Rt7vVMASEikTsld9rdgP5bspDe52F9Pyo=
