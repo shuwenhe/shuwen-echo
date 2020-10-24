@@ -1,8 +1,8 @@
 package dao
 
 import (
-	"github.com/shuwenhe/shuwen-beego/models"
 	db "github.com/shuwenhe/shuwen-echo/database"
+	"github.com/shuwenhe/shuwen-echo/models"
 )
 
 func ArticlePage(pageNo int, pageSize int) ([]*models.Article, error) {

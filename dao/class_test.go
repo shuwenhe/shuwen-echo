@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/shuwenhe/shuwen-beego/models"
+	"github.com/shuwenhe/shuwen-echo/models"
 )
 
 func testAddClass(t *testing.T) {

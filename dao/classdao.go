@@ -1,9 +1,8 @@
 package dao
 
 import (
-	"github.com/shuwenhe/shuwen-beego/models"
 	db "github.com/shuwenhe/shuwen-echo/database"
-	"github.com/shuwenhe/shuwen-go-web/model"
+	"github.com/shuwenhe/shuwen-echo/models"
 )
 
 func AddClass(cls *models.Class) error {
