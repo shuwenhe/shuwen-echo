@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/shuwenhe/shuwen-echo/dao"
 	"github.com/shuwenhe/shuwen-echo/models"
-	"github.com/shuwenhe/shuwen-echo/utilfilter"
+	"github.com/shuwenhe/shuwen-echo/util"
 	"github.com/shuwenhe/utils"
 )
 
@@ -36,7 +36,7 @@ func Login(ctx echo.Context) error {
 	}
 	jwts := jwt.NewWithClaims(jwt.SigningMethodHS256, data)
 	token, err := jwts.SignedString([]byte(`key`))
-	utilfilter.Set()
+	util.Set()
 	if err != nil {
 		return ctx.JSON(utils.NewFail("System error, please login again!", err.Error()))
 	}
