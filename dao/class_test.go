@@ -8,26 +8,11 @@ import (
 )
 
 func testAddClass(t *testing.T) {
-	cls := &models.Class{
-		Name: "shuwen",
+	class := &models.Class{
+		Name: "shuwen3",
 		Des:  "mathematics",
 	}
-
-	cls2 := &models.Class{
-		Name: "shuwen",
-		Des:  "algorithm",
-	}
-	AddClass(cls)
-	AddClass(cls2)
-}
-
-func testUpdateClass(t *testing.T) {
-	cls := &models.Class{
-		ID:   5,
-		Name: "Richard",
-		Des:  "son",
-	}
-	UpdateClass(cls)
+	AddClass(class)
 }
 
 func testGetClasses(t *testing.T) {
@@ -35,4 +20,30 @@ func testGetClasses(t *testing.T) {
 	for _, class := range classes {
 		fmt.Println("class = ", class)
 	}
+}
+
+func testGetClassByName(t *testing.T) {
+	name := "shuwen"
+	class, _ := GetClassByName(name)
+	fmt.Println("class = ", class)
+}
+
+func testGetClassByID(t *testing.T) {
+	id := 66
+	class, _ := GetClassByID(id)
+	fmt.Println("class = ", class)
+}
+
+func testUpdateClass(t *testing.T) {
+	cls := &models.Class{
+		ID:   67,
+		Name: "shuwen5",
+		Des:  "algorithm",
+	}
+	UpdateClass(cls)
+}
+
+func TestDeleteClass(t *testing.T) {
+	id := 67
+	DeleteClass(id)
 }

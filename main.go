@@ -1,7 +1,7 @@
 package main
 
-import router "github.com/shuwenhe/shuwen-echo/routers"
+import "github.com/shuwenhe/shuwen-echo/routers"
 
 func main() {
-	router.Run()
+	routers.Run()
 }

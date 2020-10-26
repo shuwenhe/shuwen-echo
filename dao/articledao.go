@@ -24,3 +24,23 @@ func ArticleCount() (int, error) {
 	}
 	return count, nil
 }
+
+func GetArticleByID(id int) (*models.Article, error) {
+	sql := "select * from article where id = ?"
+	article := &models.Article{}
+	row := db.Db.QueryRow(sql, id)
+	err := row.Scan(&article.ID, &article.Cid, &article.Title, &article.Author, &article.Content, &article.Hits, &article.Ctime)
+	if err != nil {
+		return nil, err
+	}
+	return article, nil
+}
+
+func AddArticle(a *models.Article) error {
+	sql := "insert into article (id,cid,title,author,content,hits,ctime) values(?,?,?,?,?,?,?)"
+	_, err := db.Db.Exec(sql, a.ID, a.Cid, a.Title, a.Author, a.Content, a.Hits, a.Ctime)
+	if err != nil {
+		return err
+	}
+	return nil
+}

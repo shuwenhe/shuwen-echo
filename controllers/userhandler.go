@@ -21,6 +21,9 @@ func Login(ctx echo.Context) error {
 	if err != nil {
 		return ctx.JSON(utils.NewFail("Please check if the username is correct!"))
 	}
+	if user.Name == "" {
+		return ctx.JSON(utils.NewFail("User is not exist,Please try it again!"))
+	}
 	password := ctx.FormValue("password")
 	if password != user.Password {
 		return ctx.JSON(utils.NewFail("Password error!"))
