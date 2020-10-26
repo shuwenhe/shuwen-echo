@@ -14,3 +14,9 @@ type Article struct {
 	Hits    int       `json:"hits,omitempty"`
 	Ctime   time.Time `json:"ctime,omitempty"`
 }
+
+type Page struct {
+	PageNo   int `json:"page_no,omitempty"`
+	PageSize int `json:"page_size,omitempty"`
+	ClassID  int `json:"class_id,omitempty"`
+}

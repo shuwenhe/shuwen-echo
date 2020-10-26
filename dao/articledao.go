@@ -5,10 +5,10 @@ import (
 	"github.com/shuwenhe/shuwen-echo/models"
 )
 
-func ArticlePage(pageNo int, pageSize int) ([]*models.Article, error) {
+func ArticlePage(pageNo, pageSize, classID int) ([]*models.Article, error) {
 	articles := make([]*models.Article, 0, pageSize)
-	sql := "select * from article limit ?,?"
-	err := db.Db.Select(&articles, sql, (pageNo-1)*pageSize, pageSize)
+	sql := "select * from article where cid = ? limit ?,?"
+	err := db.Db.Select(&articles, sql, classID, (pageNo-1)*pageSize, pageSize)
 	if err != nil {
 		return nil, err
 	}

@@ -34,6 +34,7 @@ func Run() {
 
 	api.GET("/article/getArticleByID", controllers.GetArticleByID)
 	api.POST("/article/addArticle", controllers.AddArticle)
+	api.GET("/article/articlePage", controllers.ArticlePage)
 
 	e.Start(":8080")
 }

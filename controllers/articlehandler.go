@@ -53,3 +53,30 @@ func AddArticle(ctx echo.Context) error {
 	}
 	return ctx.JSON(utils.NewSucc("Add article is success!"))
 }
+
+func ArticlePage(ctx echo.Context) error {
+	page := &models.Page{}
+	err := ctx.Bind(page)
+	if err != nil {
+		return ctx.JSON(utils.NewFail("Get the data fail!", err.Error()))
+	}
+
+	pageNo, err := strconv.Atoi(ctx.FormValue("pageNo"))
+	if err != nil {
+		return ctx.JSON(utils.NewFail("Get the pageNo fail!", err.Error()))
+	}
+	pageSize, err := strconv.Atoi(ctx.FormValue("pageSize"))
+	if err != nil {
+		return ctx.JSON(utils.NewFail("Get the pageSize fail!", err.Error()))
+	}
+	classID, err := strconv.Atoi(ctx.FormValue("classID"))
+	if err != nil {
+		return ctx.JSON(utils.NewFail("Get the classID fail!", err.Error()))
+	}
+
+	articles, err := dao.ArticlePage(pageNo, pageSize, classID)
+	if err != nil {
+		return ctx.JSON(utils.NewFail("Get the articles fail!", err.Error()))
+	}
+	return ctx.JSON(utils.NewSucc("Get the articles success!", articles))
+}
